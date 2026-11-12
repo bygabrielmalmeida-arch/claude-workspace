@@ -114,8 +114,12 @@ p{margin:0}
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:calc(44vh + 16px) 0 64px}
 @media(max-width:767px){.hero .eyebrow{letter-spacing:.08em;font-size:.7rem}}
 .hero::before{content:"";position:absolute;inset:auto -10% -40% -10%;height:70%;background:radial-gradient(60% 60% at 30% 50%,rgba(138,204,240,.22),transparent 70%),radial-gradient(50% 60% at 75% 40%,rgba(247,227,106,.22),transparent 70%);pointer-events:none}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 60%;transform:scale(1.04)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,250,246,.25) 0%,rgba(251,250,246,.55) 34%,rgba(251,250,246,.96) 52%,var(--bg) 100%)}
+@media(min-width:768px){.hero-bg::after{background:linear-gradient(90deg,var(--bg) 0%,rgba(251,250,246,.96) 34%,rgba(251,250,246,.6) 58%,rgba(251,250,246,.15) 100%),linear-gradient(0deg,var(--bg) 0%,rgba(251,250,246,0) 22%)}}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-.hero-fallback{position:absolute;z-index:0;top:88px;left:50%;transform:translateX(-50%);width:min(340px,80vw);transition:opacity .6s var(--ease)}
+.hero-fallback{position:absolute;z-index:1;top:88px;left:50%;transform:translateX(-50%);width:min(340px,80vw);transition:opacity .6s var(--ease)}
 .hero.has-3d .hero-fallback{opacity:0}
 .hero-content{position:relative;z-index:2;max-width:620px}
 .hero-title{margin-top:20px}
@@ -184,9 +188,13 @@ section{padding-block:60px;position:relative}
 @media(min-width:640px){.attr{padding:32px}}
 @media(min-width:1024px){.attractions{grid-template-columns:repeat(4,1fr);margin-top:64px}}
 .attr{background:var(--bg);display:grid;gap:12px;align-content:start;transition:background-color .4s var(--ease)}
+.attr-img{display:block;border-radius:16px;overflow:hidden;aspect-ratio:4/3;margin-bottom:4px}
+.attr-img img{width:100%;height:100%;object-fit:cover;min-height:0;transition:transform .7s var(--ease)}
+.attr:hover .attr-img img{transform:scale(1.06)}
+.attr h3{display:flex;align-items:center;gap:8px}
+.attr h3 .ico{width:18px;height:18px}
 .attr:hover{background:var(--surface)}
-.attr .ico{color:var(--muted);transition:transform .4s var(--ease),color .4s var(--ease)}
-.attr:hover .ico{transform:translateY(-4px);color:var(--accent)}
+.attr .ico{color:var(--accent);opacity:.85}
 .attr h3{font-size:1.2rem}
 .attr p{font-size:.95rem;color:var(--muted)}
 
@@ -194,15 +202,18 @@ section{padding-block:60px;position:relative}
 .themes{display:grid;gap:16px}
 @media(min-width:640px){.themes{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.themes{grid-template-columns:repeat(3,1fr);gap:24px}}
-.theme{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;padding:32px;border-radius:28px;background:var(--surface);border:1px solid var(--line);overflow:hidden;text-decoration:none;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.theme{position:relative;display:flex;flex-direction:column;border-radius:28px;background:var(--surface);border:1px solid var(--line);overflow:hidden;text-decoration:none;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .theme:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
-.theme-dots{position:absolute;right:-24px;top:-24px;width:160px;height:160px;border-radius:50%;background:var(--c,var(--accent));opacity:.14;transition:transform .7s var(--ease),opacity .5s var(--ease)}
-.theme:hover .theme-dots{transform:scale(1.25);opacity:.22}
-.theme-dots::after{content:"";position:absolute;left:24px;bottom:28px;width:14px;height:14px;border-radius:50%;background:var(--c2,var(--yellow));box-shadow:28px 18px 0 -3px var(--c,var(--accent)),56px 4px 0 -2px var(--c2,var(--yellow))}
+.theme-img{position:relative;display:block;aspect-ratio:16/10;overflow:hidden}
+.theme-img img{width:100%;height:100%;object-fit:cover;min-height:0;transition:transform .8s var(--ease)}
+.theme:hover .theme-img img{transform:scale(1.06)}
+.theme-img small{position:absolute;left:16px;top:16px;background:rgba(255,255,255,.92);color:var(--text);padding:2px 12px;border-radius:999px;font-size:.8rem}
+.theme-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--c,var(--accent))}
+.theme-body{display:flex;flex-direction:column;flex:1;padding:24px 28px 28px}
 .theme small{font-family:var(--display);font-weight:700;color:var(--muted);letter-spacing:.08em}
-.theme h3{font-size:clamp(1.5rem,2.4vw,1.85rem);margin-top:auto}
+.theme h3{font-size:clamp(1.4rem,2.2vw,1.7rem)}
 .theme p{margin-top:8px;font-size:.95rem;color:var(--muted)}
-.theme-cta{display:flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;color:var(--accent-strong);font-size:.95rem}
+.theme-cta{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:16px;font-weight:700;color:var(--accent-strong);font-size:.95rem}
 .theme-cta .ico{width:18px;height:18px;transition:transform .4s var(--ease)}
 .theme:hover .theme-cta .ico{transform:translateX(4px)}
 .themes-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
@@ -397,6 +408,7 @@ section{padding-block:60px;position:relative}
 
 <!-- HERO -->
 <section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?w=1920&q=80&auto=format&fit=crop" alt="" width="1920" height="1280" fetchpriority="high"></div>
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
   <!-- Fallback ilustrado (aparece se o 3D não carregar) -->
@@ -450,7 +462,7 @@ section{padding-block:60px;position:relative}
     </div>
     <div class="media">
       <!-- Troque pela foto real do salão -->
-      <img class="parallax-img" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1100&q=80&auto=format&fit=crop" alt="Salão decorado com balões coloridos para festa infantil" loading="lazy" width="1100" height="1375">
+      <img class="parallax-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1100&q=80&auto=format&fit=crop" alt="Crianças sorrindo e comemorando juntas" loading="lazy" width="1100" height="1375">
       <div class="media-badge"><strong>2</strong><span>casas de festas<br>no mesmo lugar</span></div>
     </div>
   </div>
@@ -460,7 +472,7 @@ section{padding-block:60px;position:relative}
 <section class="band" aria-label="Destaque">
   <div class="band-inner">
     <!-- Troque pela foto real de uma festa -->
-    <img class="parallax-img" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=1800&q=80&auto=format&fit=crop" alt="Crianças comemorando aniversário com confetes" loading="lazy" width="1800" height="1200">
+    <img class="parallax-img" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1800&q=80&auto=format&fit=crop" alt="Balões coloridos de festa" loading="lazy" width="1800" height="1200">
     <div class="container band-copy">
       <h2 class="section-headline">Duas casas. Um endereço. <span>Zero preocupação.</span></h2>
     </div>
@@ -500,14 +512,14 @@ section{padding-block:60px;position:relative}
     </div>
 
     <div class="attractions">
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-slide"/></svg><h3>Brinquedão com tobogã</h3><p>Escorregas, túneis e obstáculos para gastar energia com segurança.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-balls"/></svg><h3>Piscina de bolinhas</h3><p>O clássico que nenhuma criança dispensa, sempre higienizado.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-baby"/></svg><h3>Área baby</h3><p>Cantinho macio e protegido para bebês e crianças pequenas.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-game"/></svg><h3>Jogos e brinquedos</h3><p>Diversão para os maiores, com brinquedos variados.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-smile"/></svg><h3>Personagens vivos</h3><p>Princesas, heróis e personagens favoritos para animar a festa.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg><h3>Cenário para fotos</h3><p>Painéis e mesas temáticas pensadas para render fotos lindas.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-snow"/></svg><h3>Ambiente climatizado</h3><p>Conforto para crianças e adultos, faça chuva ou faça sol.</p></div>
-      <div class="attr"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><h3>Equipe de monitores</h3><p>Monitores acompanhando as crianças enquanto você aproveita.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=700&q=80&auto=format&fit=crop" alt="Brinquedão colorido com escorregador" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-slide"/></svg>Brinquedão com tobogã</h3><p>Escorregas, túneis e obstáculos para gastar energia com segurança.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1551966775-a4ddc8df052b?w=700&q=80&auto=format&fit=crop" alt="Criança brincando com bolas e balões" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-balls"/></svg>Piscina de bolinhas</h3><p>O clássico que nenhuma criança dispensa, sempre higienizado.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=700&q=80&auto=format&fit=crop" alt="Bebê com macacão de ursinho" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-baby"/></svg>Área baby</h3><p>Cantinho macio e protegido para bebês e crianças pequenas.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=700&q=80&auto=format&fit=crop" alt="Brinquedos coloridos organizados" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-game"/></svg>Jogos e brinquedos</h3><p>Diversão para os maiores, com brinquedos variados.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=700&q=80&auto=format&fit=crop" alt="Menina sorrindo com pintura no rosto" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-smile"/></svg>Personagens vivos</h3><p>Princesas, heróis e personagens favoritos para animar a festa.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=700&q=80&auto=format&fit=crop" alt="Criança brincando com câmera de brinquedo" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg>Cenário para fotos</h3><p>Painéis e mesas temáticas pensadas para render fotos lindas.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=700&q=80&auto=format&fit=crop" alt="Salão de festa iluminado com convidados" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-snow"/></svg>Ambiente climatizado</h3><p>Conforto para crianças e adultos, faça chuva ou faça sol.</p></div>
+      <div class="attr"><span class="attr-img"><img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=700&q=80&auto=format&fit=crop" alt="Monitora brincando com um grupo de crianças" loading="lazy" width="700" height="525"></span><h3><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Equipe de monitores</h3><p>Monitores acompanhando as crianças enquanto você aproveita.</p></div>
     </div>
   </div>
 </section>
@@ -522,29 +534,29 @@ section{padding-block:60px;position:relative}
     </div>
 
     <div class="themes">
-      <a class="theme" style="--c:#EF5D7A;--c2:#F7E36A" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20o%20tema%20Princesas." target="_blank" rel="noopener">
-        <span class="theme-dots" aria-hidden="true"></span><small>01</small>
-        <div><h3>Princesas & Contos</h3><p>Delicadeza, brilho e muito encanto.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+      <a class="theme" style="--c:#EF5D7A;--c2:#F7E36A" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20o%20tema%20Unic%C3%B3rnio%20e%20Arco-%C3%ADris." target="_blank" rel="noopener">
+        <span class="theme-img"><img src="https://images.unsplash.com/photo-1572451479139-6a308211d8be?w=800&q=80&auto=format&fit=crop" alt="Cupcake com arco-íris colorido" loading="lazy" width="800" height="500"><small>01</small></span>
+        <div class="theme-body"><h3>Unicórnio & Arco-íris</h3><p>Cores, brilho e muita magia.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
       </a>
       <a class="theme" style="--c:#8ACCF0;--c2:#F07A2C" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20o%20tema%20Super-her%C3%B3is." target="_blank" rel="noopener">
-        <span class="theme-dots" aria-hidden="true"></span><small>02</small>
-        <div><h3>Super-heróis</h3><p>Aventura e poderes para os pequenos heróis.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <span class="theme-img"><img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=800&q=80&auto=format&fit=crop" alt="Crianças fantasiadas de super-heróis" loading="lazy" width="800" height="500"><small>02</small></span>
+        <div class="theme-body"><h3>Super-heróis</h3><p>Aventura e poderes para os pequenos heróis.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
       </a>
       <a class="theme" style="--c:#27A96C;--c2:#F7E36A" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20o%20tema%20Safari." target="_blank" rel="noopener">
-        <span class="theme-dots" aria-hidden="true"></span><small>03</small>
-        <div><h3>Safari & Bichinhos</h3><p>Natureza, verde e muita fofura.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <span class="theme-img"><img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=800&q=80&auto=format&fit=crop" alt="Menino observando um filhote de cervo" loading="lazy" width="800" height="500"><small>03</small></span>
+        <div class="theme-body"><h3>Safari & Bichinhos</h3><p>Natureza, verde e muita fofura.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
       </a>
       <a class="theme" style="--c:#F07A2C;--c2:#EF5D7A" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20tema%20de%20desenho%20animado." target="_blank" rel="noopener">
-        <span class="theme-dots" aria-hidden="true"></span><small>04</small>
-        <div><h3>Desenhos favoritos</h3><p>Os personagens do momento, do jeito que ele ama.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <span class="theme-img"><img src="https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=800&q=80&auto=format&fit=crop" alt="Robô de brinquedo colorido" loading="lazy" width="800" height="500"><small>04</small></span>
+        <div class="theme-body"><h3>Desenhos favoritos</h3><p>Os personagens do momento, do jeito que ele ama.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
       </a>
       <a class="theme" style="--c:#8ACCF0;--c2:#27A96C" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20o%20tema%20Fundo%20do%20Mar." target="_blank" rel="noopener">
-        <span class="theme-dots" aria-hidden="true"></span><small>05</small>
-        <div><h3>Fundo do Mar</h3><p>Tons de azul, sereias e amiguinhos marinhos.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <span class="theme-img"><img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=800&q=80&auto=format&fit=crop" alt="Fundo do mar azul" loading="lazy" width="800" height="500"><small>05</small></span>
+        <div class="theme-body"><h3>Fundo do Mar</h3><p>Tons de azul, sereias e amiguinhos marinhos.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
       </a>
       <a class="theme" style="--c:#F7E36A;--c2:#8ACCF0" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20uma%20festa%20com%20um%20tema%20personalizado." target="_blank" rel="noopener">
-        <span class="theme-dots" aria-hidden="true"></span><small>06</small>
-        <div><h3>Primeiro aninho</h3><p>Um tema exclusivo para um dia que não se repete.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <span class="theme-img"><img src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?w=800&q=80&auto=format&fit=crop" alt="Bebê sorrindo coberto com mantinha" loading="lazy" width="800" height="500"><small>06</small></span>
+        <div class="theme-body"><h3>Primeiro aninho</h3><p>Um tema exclusivo para um dia que não se repete.</p><span class="theme-cta">Quero este tema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
       </a>
     </div>
 
