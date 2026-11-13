@@ -220,7 +220,7 @@ section{padding-block:60px;position:relative}
 .themes-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
 .themes-foot p{color:var(--muted);max-width:52ch}
 
-/* Gastronomia + Pacotes */
+/* Gastronomia */
 .food{display:grid;gap:48px;align-items:center;margin-bottom:96px}
 @media(min-width:1024px){.food{grid-template-columns:.9fr 1.1fr;gap:96px;margin-bottom:140px}}
 .food .media{aspect-ratio:1/1}
@@ -231,23 +231,8 @@ section{padding-block:60px;position:relative}
 .menu-list li span{display:block;font-size:.9rem;color:var(--muted)}
 .menu-list .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;transform:translateY(-2px)}
 
-.plans{display:grid;gap:24px;align-items:stretch}
-@media(min-width:1024px){.plans{grid-template-columns:repeat(3,1fr)}}
-.plan{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:32px;padding:40px 32px;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease)}
-.plan:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
-.plan.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow)}
-.plan-tag{position:absolute;top:-14px;left:32px;background:var(--yellow);color:var(--text);font-family:var(--display);font-weight:700;font-size:.82rem;padding:4px 14px;border-radius:999px}
-.plan h3{font-size:1.75rem}
-.plan .for{margin-top:8px;color:var(--muted);font-size:.95rem}
-.plan .price{margin-top:24px;padding-bottom:24px;border-bottom:1px solid var(--line);font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--accent-strong)}
-.plan .price small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--muted)}
-.plan ul{list-style:none;padding:0;margin:24px 0 32px;display:grid;gap:12px;flex:1}
-.plan li{display:flex;gap:12px;font-size:.98rem}
-.plan li .ico{width:20px;height:20px;color:var(--accent);margin-top:3px}
-.plan .btn{width:100%}
-
 /* Como reservar */
-.steps{display:grid;gap:16px;counter-reset:step;margin-top:64px}
+.steps{display:grid;gap:16px;counter-reset:step}
 @media(min-width:768px){.steps{grid-template-columns:repeat(4,1fr);gap:24px}}
 .step{position:relative;padding-top:24px;border-top:1px solid var(--line)}
 .step::before{counter-increment:step;content:"0" counter(step);font-family:var(--display);font-weight:800;font-size:1rem;color:var(--accent)}
@@ -372,7 +357,7 @@ section{padding-block:60px;position:relative}
       <a href="#sobre">Sobre</a>
       <a href="#espaco">Espaço</a>
       <a href="#temas">Temas</a>
-      <a href="#pacotes">Pacotes</a>
+      <a href="#buffet">Buffet</a>
       <a href="#faq">Dúvidas</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -396,7 +381,7 @@ section{padding-block:60px;position:relative}
     <a href="#sobre">Sobre</a>
     <a href="#espaco">Espaço</a>
     <a href="#temas">Temas</a>
-    <a href="#pacotes">Pacotes</a>
+    <a href="#buffet">Buffet</a>
     <a href="#faq">Dúvidas</a>
     <a href="#contato">Contato</a>
   </nav>
@@ -568,8 +553,8 @@ section{padding-block:60px;position:relative}
   </div>
 </section>
 
-<!-- GASTRONOMIA + PACOTES -->
-<section id="pacotes" class="reveal-section">
+<!-- GASTRONOMIA + COMO RESERVAR -->
+<section id="buffet" class="reveal-section">
   <div class="container">
     <div class="food">
       <div class="media">
@@ -591,56 +576,15 @@ section{padding-block:60px;position:relative}
       </div>
     </div>
 
-    <div class="section-head center">
-      <span class="eyebrow">Pacotes</span>
-      <h2 class="section-headline">Tudo incluso, sem surpresas.</h2>
-      <p class="lead">Espaço, buffet, decoração e equipe em um único contrato. Escolha o formato e receba o orçamento no WhatsApp.</p>
-    </div>
-
-    <div class="plans">
-      <article class="plan">
-        <h3>Festa Essencial</h3>
-        <p class="for">Para festas mais intimistas e primeiros aninhos.</p>
-        <p class="price">Sob consulta<small>valor conforme data e nº de convidados</small></p>
-        <ul>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Espaço exclusivo com brinquedos</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Buffet completo de salgados e bebidas</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Decoração temática</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Equipe de atendimento e monitores</li>
-        </ul>
-        <a class="btn btn-ghost" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20pacote%20Festa%20Essencial." target="_blank" rel="noopener"><svg class="wa" aria-hidden="true"><use href="#i-wa"/></svg>Quero esse pacote</a>
-      </article>
-      <article class="plan featured">
-        <span class="plan-tag">Mais pedido</span>
-        <h3>Festa Completa</h3>
-        <p class="for">O equilíbrio perfeito para a festa dos sonhos.</p>
-        <p class="price">Sob consulta<small>valor conforme data e nº de convidados</small></p>
-        <ul>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Tudo do Essencial</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Bolo e docinhos personalizados</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Cardápio ampliado com mini pizzas</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Lembrancinhas temáticas</li>
-        </ul>
-        <a class="btn btn-primary" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20pacote%20Festa%20Completa." target="_blank" rel="noopener"><svg class="wa" aria-hidden="true"><use href="#i-wa"/></svg>Quero esse pacote</a>
-      </article>
-      <article class="plan">
-        <h3>Festa Encantada</h3>
-        <p class="for">Para quem quer viver uma experiência inesquecível.</p>
-        <p class="price">Sob consulta<small>valor conforme data e nº de convidados</small></p>
-        <ul>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Tudo da Completa</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Personagens vivos</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Decoração premium com painel exclusivo</li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Cenário especial para fotos</li>
-        </ul>
-        <a class="btn btn-ghost" href="https://wa.me/5521975981090?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20pacote%20Festa%20Encantada." target="_blank" rel="noopener"><svg class="wa" aria-hidden="true"><use href="#i-wa"/></svg>Quero esse pacote</a>
-      </article>
+    <div class="section-head">
+      <span class="eyebrow">Como reservar</span>
+      <h2 class="section-headline">Do primeiro oi ao parabéns.</h2>
     </div>
 
     <div class="steps">
       <div class="step"><h3>Chame no WhatsApp</h3><p>Conte a data, a idade e quantos convidados.</p></div>
       <div class="step"><h3>Visite o espaço</h3><p>Agende uma visita e conheça as duas casas.</p></div>
-      <div class="step"><h3>Escolha o tema</h3><p>Monte o pacote e a decoração com a gente.</p></div>
+      <div class="step"><h3>Escolha o tema</h3><p>Defina a decoração e o cardápio com a gente.</p></div>
       <div class="step"><h3>É só festejar</h3><p>No grande dia, você só aproveita.</p></div>
     </div>
   </div>
@@ -680,7 +624,7 @@ section{padding-block:60px;position:relative}
       <div><a class="btn btn-primary" href="https://wa.me/5521975981090?text=Ol%C3%A1%2C%20Festou%20Kids!%20Tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener"><svg class="wa" aria-hidden="true"><use href="#i-wa"/></svg>Tirar dúvida</a></div>
     </div>
     <div class="faq-list">
-      <details open><summary>Quantos convidados cabem em cada casa?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>A capacidade varia conforme a casa escolhida e o formato da festa. Conte para a gente quantos convidados você espera e indicamos a casa e o pacote ideais.</p></details>
+      <details open><summary>Quantos convidados cabem em cada casa?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>A capacidade varia conforme a casa escolhida e o formato da festa. Conte para a gente quantos convidados você espera e indicamos a casa ideal para a sua festa.</p></details>
       <details><summary>As duas festas acontecem juntas?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não. Cada casa é independente, com salão, brinquedos e equipe próprios. A sua festa é só sua, mesmo quando há outra comemoração no endereço.</p></details>
       <details><summary>Posso visitar o espaço antes de fechar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Claro! Agende uma visita pelo WhatsApp e venha conhecer as duas casas, ver a estrutura de perto e tirar todas as dúvidas com a nossa equipe.</p></details>
       <details><summary>Com quanto tempo de antecedência devo reservar?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Quanto antes, melhor, principalmente para sábados e domingos, que são as datas mais procuradas. Consulte a disponibilidade da sua data pelo WhatsApp.</p></details>
@@ -740,7 +684,7 @@ section{padding-block:60px;position:relative}
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#espaco">Espaço e atrações</a></li>
           <li><a href="#temas">Decoração</a></li>
-          <li><a href="#pacotes">Pacotes</a></li>
+          <li><a href="#buffet">Buffet</a></li>
           <li><a href="#faq">Dúvidas</a></li>
         </ul>
       </div>
