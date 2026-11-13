@@ -267,7 +267,9 @@ section{padding-block:60px;position:relative}
 
 /* FAQ */
 .faq-grid{display:grid;gap:48px}
-@media(min-width:1024px){.faq-grid{grid-template-columns:.8fr 1.2fr;gap:96px}}
+.faq-grid{align-items:start}
+.faq-grid > .section-head{align-content:start}
+@media(min-width:1024px){.faq-grid{grid-template-columns:.8fr 1.2fr;gap:96px}.faq-grid > .section-head{position:sticky;top:120px}}
 .faq-list{border-top:1px solid var(--line)}
 .faq-list details{border-bottom:1px solid var(--line)}
 .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,1.8vw,1.25rem);transition:color .3s var(--ease)}
